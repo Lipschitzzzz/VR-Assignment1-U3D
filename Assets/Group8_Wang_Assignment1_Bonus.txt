@@ -1,0 +1,26 @@
+This is the first time for me to upload/share the project(.exe) to others.
+If you can not run it please tell me :)
+
+Main idea is record every wallcube position and rotation every frame.
+The relevant data structure is List<Queue> and Queue.
+
+Why Queue?
+Because it is the proper data structure for FIFO. If we maintain n frame. So the first element should be remove and the add a new frame at the tail. But when rewinding. The first element is the n frames before while the last element is the 1 frames before. So take care of the forloop index.
+
+List<Queue>    [queue1 queue2 ... queueN ]
+queueN = [position before nframe position before n-1frame ... position before 1frame]
+                  [rotation before nframe rotation before n-1frame ... rotation before 1frame]
+                  [Vector3 Vector3 ... Vector3]
+                  [Quaternion Quaternion ... Quaternion]
+
+Set a flag to control the rewind.
+
+flag = false/true
+stop recoding the positoin and rotation
+switch the Gravity and Kinematic
+start reading position and rotation from the List<Queue>
+
+flag = true/false
+stop reading position and rotation from the List<Queue>
+switch the Gravity and Kinematic
+start recoding the positoin and rotation
